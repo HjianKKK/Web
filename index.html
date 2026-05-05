@@ -60,23 +60,15 @@
         }
 
         .logo-img {
-            height: 40px; /* LOGO高度，会自动适应不同语言版本的比例 */
+            height: 60px; /* 放大的Logo高度 */
             width: auto;
             transition: opacity 0.3s ease;
-        }
-
-        .game-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #00ccff, #0066ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
 
         .nav-links {
             display: flex;
             gap: 30px;
+            align-items: center;
         }
 
             .nav-links a {
@@ -89,6 +81,39 @@
                     color: #00ccff;
                     border-bottom-color: #00ccff;
                 }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-btn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            border: 1px solid #00ccff;
+            color: #00ccff;
+        }
+
+            .btn-login:hover {
+                background-color: rgba(0, 204, 255, 0.1);
+            }
+
+        .btn-register {
+            background: linear-gradient(to right, #0066ff, #00ccff);
+            border: none;
+            color: white;
+        }
+
+            .btn-register:hover {
+                box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
+            }
 
         .language-select {
             padding: 8px 15px;
@@ -128,7 +153,7 @@
         }
 
         .hero-logo {
-            max-width: 300px;
+            max-width: 400px; /* 放大的英雄区域Logo */
             width: 100%;
             margin-bottom: 30px;
             filter: drop-shadow(0 0 10px rgba(0, 204, 255, 0.5));
@@ -165,17 +190,139 @@
                 box-shadow: 0 8px 20px rgba(0, 102, 255, 0.6);
             }
 
-        /* 3. 关注我们区域 */
-        .follow-section {
-            padding: 80px 0;
-            text-align: center;
-            border-top: 1px solid #333;
+        /* 3. 关于游戏区域 */
+        .about-section {
+            padding: 100px 0;
+            background-color: rgba(26, 26, 26, 0.7);
         }
 
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 50px;
+            text-align: center;
             color: #fff;
+        }
+
+        .about-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 60px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cg-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cg-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .cg-item:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0, 102, 255, 0.3);
+            }
+
+        .cg-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 4. 宣传视频区域 */
+        .media-section {
+            padding: 100px 0;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .video-wrapper {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background-color: #0d0d0d;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .video-title {
+            padding: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+            background: linear-gradient(to right, #1a1a1a, #0d0d0d);
+        }
+
+        .video-frame {
+            width: 100%;
+            height: 360px;
+            border: none;
+        }
+
+        /* 5. 支持我们区域 */
+        .support-section {
+            padding: 100px 0;
+            background-color: rgba(26, 26, 26, 0.7);
+        }
+
+        .support-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 60px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #ccc;
+        }
+
+        .support-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .support-item {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .support-item:hover {
+                transform: translateY(-10px) scale(1.05);
+                box-shadow: 0 15px 40px rgba(0, 102, 255, 0.3);
+            }
+
+        .support-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 6. 关注我们区域 */
+        .follow-section {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #333;
         }
 
         .social-buttons {
@@ -209,10 +356,17 @@
                 margin-bottom: 15px;
             }
 
+            .social-btn img {
+                width: 2.5rem;
+                height: 2.5rem;
+                margin-bottom: 15px;
+            }
+
             .social-btn .platform {
                 font-size: 0.9rem;
                 opacity: 0.8;
             }
+
         /* 为不同平台设置特色颜色 */
         .btn-qq {
             color: #12b7f5;
@@ -232,10 +386,6 @@
             border-radius: 10px;
             padding: 2px;
         }
-            /* 修正X图标样式 - 确保正确显示 */
-            .btn-x i {
-                color: #000000;
-            }
 
         /* 页脚 */
         footer {
@@ -245,6 +395,150 @@
             font-size: 0.9rem;
             border-top: 1px solid #333;
         }
+
+        /* 7. 登录/注册模态框 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            border: 1px solid #333;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+            .modal-close:hover {
+                color: #00ccff;
+            }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+            .auth-tab.active {
+                color: #00ccff;
+                border-bottom: 2px solid #00ccff;
+            }
+
+        .auth-form {
+            display: none;
+        }
+
+            .auth-form.active {
+                display: block;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #0d0d0d;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+            .form-input:focus {
+                outline: none;
+                border-color: #00ccff;
+            }
+
+        .form-error {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #0066ff, #00ccff);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+            .form-submit:hover {
+                box-shadow: 0 5px 20px rgba(0, 102, 255, 0.5);
+            }
+
+        .form-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #ccc;
+        }
+
+            .form-switch a {
+                color: #00ccff;
+                cursor: pointer;
+            }
+
+                .form-switch a:hover {
+                    text-decoration: underline;
+                }
     </style>
 </head>
 <body>
@@ -253,40 +547,102 @@
         <div class="container nav-container">
             <div class="logo-section">
                 <!-- 多语言Logo，默认显示中文版 -->
-                <img src="./logo-zh.png" alt="Tartarus' Torment Logo" class="logo-img" id="nav-logo">
-                <div class="game-title">TARTARUS' TORMENT</div>
+                <img src="https://i.ibb.co/qYRmkZ6R/image.png" alt="Tartarus' Torment Logo" class="logo-img" id="nav-logo">
             </div>
             <div class="nav-links">
                 <a href="#home" data-i18n="nav.home">首页</a>
                 <a href="#about" data-i18n="nav.about">关于游戏</a>
                 <a href="#media" data-i18n="nav.media">宣传视频</a>
-                <a href="#news" data-i18n="nav.news">新闻动态</a>
+                <a href="#support" data-i18n="nav.support">支持我们</a>
+
+                <div class="auth-buttons">
+                    <button class="auth-btn btn-login" id="loginBtn" data-i18n="nav.login">登录</button>
+                    <button class="auth-btn btn-register" id="registerBtn" data-i18n="nav.register">注册</button>
+                </div>
+
+                <!-- 语言选择器 -->
+                <select class="language-select" id="languageSelect">
+                    <option value="zh" selected>中文</option>
+                    <option value="en">English</option>
+                    <option value="ja">日本語</option>
+                    <option value="ru">Русский</option>
+                    <option value="de">Deutsch</option>
+                </select>
             </div>
-            <!-- 语言选择器 - 添加更多语言选项 -->
-            <select class="language-select" id="languageSelect">
-                <option value="zh" selected>中文</option>
-                <option value="en">English</option>
-                <option value="ja">日本語</option>
-                <option value="ru">Русский</option>
-                <option value="de">Deutsch</option>
-            </select>
         </div>
     </nav>
 
     <!-- 2. 英雄区域 -->
     <section class="hero" id="home">
-        <!-- 多语言背景图（可选） -->
-        <img src="./your-cg-image.jpg" alt="Tartarus' Torment CG" class="cg-bg">
+        <!-- 主界面大图作为背景 -->
+        <img src="https://i.ibb.co/qM09YXq0/CG4.png" alt="Tartarus' Torment 主界面CG" class="cg-bg">
         <div class="hero-content">
             <!-- 英雄区域Logo -->
-            <img src="./logo-zh.png" alt="Tartarus' Torment Logo" class="hero-logo" id="hero-logo">
-            <h1 data-i18n="hero.title">深入冥府，直面你的刑罚</h1>
-            <p data-i18n="hero.description">一款基于古希腊神话的暗黑动作角色扮演游戏。探索无尽深渊塔尔塔罗斯，在绝望与背叛中寻求救赎，定义属于你的神话。</p>
+            <img src="https://i.ibb.co/qYRmkZ6R/image.png" alt="Tartarus' Torment Logo" class="hero-logo" id="hero-logo">
+            <h1 data-i18n="hero.title">逃离名为"塔尔塔罗斯"的控制</h1>
+            <p data-i18n="hero.description">一款基于Unity的2D恐怖动作角色扮演游戏。</p>
             <a href="#follow" class="cta-button" data-i18n="hero.cta">关注我们，获取最新资讯</a>
         </div>
     </section>
 
-    <!-- 3. 关注我们区域 -->
+    <!-- 3. 关于游戏区域 -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title" data-i18n="about.title">关于游戏</h2>
+            <p class="about-description" data-i18n="about.description">
+                在《塔尔塔罗斯之刑》中，玩家将扮演一名被困在神秘设施"塔尔塔罗斯"中的实验体。这座设施隐藏着无数恐怖的秘密和致命的实验。你需要解开谜题，躲避追捕，与其他幸存者合作，最终逃离这个人间地狱。游戏结合了恐怖氛围、动作冒险和角色扮演元素，为玩家带来紧张刺激的游戏体验。
+            </p>
+
+            <!-- CG图片展示区 -->
+            <div class="cg-gallery">
+                <div class="cg-item">
+                    <img src="https://i.ibb.co/hJRsmfxZ/CG1.jpg" alt="游戏CG1" class="cg-image">
+                </div>
+                <div class="cg-item">
+                    <img src="https://i.ibb.co/kgMDqYwx/CG2.jpg" alt="游戏CG2" class="cg-image">
+                </div>
+                <div class="cg-item">
+                    <img src="https://i.ibb.co/7NWQTcYq/CG3.jpg" alt="游戏CG3" class="cg-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 宣传视频区域 -->
+    <section class="media-section" id="media">
+        <div class="container">
+            <h2 class="section-title" data-i18n="media.title">宣传视频</h2>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <div class="video-title" data-i18n="media.videoTitle">游戏最新预告片</div>
+                    <!-- 新增视频 -->
+                    <iframe width="640" height="360" src="https://short.icu/qrzT4k8Vc" frameborder="0" scrolling="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 支持我们区域 -->
+    <section class="support-section" id="support">
+        <div class="container">
+            <h2 class="section-title" data-i18n="support.title">支持我们</h2>
+            <p class="support-description" data-i18n="support.description">
+                您的支持是我们持续开发的动力！我们致力于为玩家带来最佳的游戏体验，每一份支持都将帮助我们改进游戏品质，添加更多精彩内容。
+            </p>
+
+            <!-- 支持我们图片展示区 -->
+            <div class="support-gallery">
+                <div class="support-item">
+                    <img src="https://i.ibb.co/5gnWZ364/123.png" alt="支持图片1" class="support-image">
+                </div>
+                <div class="support-item">
+                    <img src="https://i.ibb.co/gMSgmhzB/20260505192156-16-49.png" alt="支持图片2" class="support-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 关注我们区域 -->
     <section class="follow-section" id="follow">
         <div class="container">
             <h2 class="section-title" data-i18n="follow.title">关注我们</h2>
@@ -307,8 +663,8 @@
                     <div class="id">@HjianKKK</div>
                 </a>
                 <a href="https://x.com/GCi01TmxmsKodRY" target="_blank" class="social-btn btn-x">
-                    <!-- 使用正确的X(Twitter)图标 -->
-                    <i class="fab fa-x-twitter"></i>
+                    <!-- 使用网图作为X图标 -->
+                    <img src="https://img.icons8.com/ios-filled/50/000000/twitterx.png" alt="X (Twitter)">
                     <div class="platform">X (Twitter)</div>
                     <div class="id">@GCi01TmxmsKodRY</div>
                 </a>
@@ -322,6 +678,71 @@
         </div>
     </footer>
 
+    <!-- 7. 登录/注册模态框 -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">登录</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab" data-i18n="auth.login">登录</button>
+                <button class="auth-tab" id="registerTab" data-i18n="auth.register">注册</button>
+            </div>
+
+            <!-- 登录表单 -->
+            <form class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="loginUsername" data-i18n="auth.username">用户名</label>
+                    <input type="text" class="form-input" id="loginUsername" maxlength="10">
+                    <div class="form-error" id="loginUsernameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="loginPassword" data-i18n="auth.password">密码</label>
+                    <input type="password" class="form-input" id="loginPassword" maxlength="15">
+                    <div class="form-error" id="loginPasswordError"></div>
+                </div>
+
+                <button type="submit" class="form-submit" data-i18n="auth.login">登录</button>
+
+                <div class="form-switch">
+                    <span data-i18n="auth.noAccount">还没有账户？</span>
+                    <a id="switchToRegister" data-i18n="auth.register">立即注册</a>
+                </div>
+            </form>
+
+            <!-- 注册表单 -->
+            <form class="auth-form" id="registerForm">
+                <div class="form-group">
+                    <label class="form-label" for="registerUsername" data-i18n="auth.username">用户名</label>
+                    <input type="text" class="form-input" id="registerUsername" maxlength="10">
+                    <div class="form-error" id="registerUsernameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="registerPassword" data-i18n="auth.password">密码</label>
+                    <input type="password" class="form-input" id="registerPassword" maxlength="15">
+                    <div class="form-error" id="registerPasswordError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword" data-i18n="auth.confirmPassword">确认密码</label>
+                    <input type="password" class="form-input" id="confirmPassword" maxlength="15">
+                    <div class="form-error" id="confirmPasswordError"></div>
+                </div>
+
+                <button type="submit" class="form-submit" data-i18n="auth.register">注册</button>
+
+                <div class="form-switch">
+                    <span data-i18n="auth.haveAccount">已有账户？</span>
+                    <a id="switchToLogin" data-i18n="auth.login">立即登录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         // ==================== 多语言系统 ====================
 
@@ -332,77 +753,160 @@
                 "nav.home": "首页",
                 "nav.about": "关于游戏",
                 "nav.media": "宣传视频",
-                "nav.news": "新闻动态",
+                "nav.support": "支持我们",
+                "nav.login": "登录",
+                "nav.register": "注册",
 
                 // 英雄区域
-                "hero.title": "深入冥府，直面你的刑罚",
-                "hero.description": "一款基于古希腊神话的暗黑动作角色扮演游戏。探索无尽深渊塔尔塔罗斯，在绝望与背叛中寻求救赎，定义属于你的神话。",
+                "hero.title": "逃离名为\"塔尔塔罗斯\"的控制",
+                "hero.description": "一款基于Unity的2D恐怖动作角色扮演游戏。",
                 "hero.cta": "关注我们，获取最新资讯",
+
+                // 关于游戏区域
+                "about.title": "关于游戏",
+                "about.description": "在《塔尔塔罗斯之刑》中，玩家将扮演一名被困在神秘设施\"塔尔塔罗斯\"中的实验体。这座设施隐藏着无数恐怖的秘密和致命的实验。你需要解开谜题，躲避追捕，与其他幸存者合作，最终逃离这个人间地狱。游戏结合了恐怖氛围、动作冒险和角色扮演元素，为玩家带来紧张刺激的游戏体验。",
+
+                // 宣传视频区域
+                "media.title": "宣传视频",
+                "media.videoTitle": "游戏最新预告片",
+
+                // 支持我们区域
+                "support.title": "支持我们",
+                "support.description": "您的支持是我们持续开发的动力！我们致力于为玩家带来最佳的游戏体验，每一份支持都将帮助我们改进游戏品质，添加更多精彩内容。",
 
                 // 关注我们
                 "follow.title": "关注我们",
                 "follow.bilibili": "哔哩哔哩",
 
                 // 页脚
-                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | '塔尔塔罗斯之刑' 是该项目暂定名称。"
+                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | \"塔尔塔罗斯之刑\" 是该项目暂定名称。",
+
+                // 登录/注册
+                "auth.login": "登录",
+                "auth.register": "注册",
+                "auth.username": "用户名",
+                "auth.password": "密码",
+                "auth.confirmPassword": "确认密码",
+                "auth.noAccount": "还没有账户？",
+                "auth.haveAccount": "已有账户？"
             },
             en: {
                 "nav.home": "Home",
                 "nav.about": "About",
                 "nav.media": "Media",
-                "nav.news": "News",
-                "hero.title": "Descend into Hades, Face Your Punishment",
-                "hero.description": "A dark action RPG based on Greek mythology. Explore the endless abyss of Tartarus, seek redemption amidst despair and betrayal, and define your own myth.",
+                "nav.support": "Support Us",
+                "nav.login": "Login",
+                "nav.register": "Register",
+                "hero.title": "Escape the Control of \"Tartarus\"",
+                "hero.description": "A 2D horror action RPG based on Unity.",
                 "hero.cta": "Follow Us for Updates",
+                "about.title": "About the Game",
+                "about.description": "In 'Tartarus' Torment', players take on the role of a test subject trapped in the mysterious facility 'Tartarus'. This facility hides countless terrifying secrets and deadly experiments. You need to solve puzzles, avoid capture, cooperate with other survivors, and ultimately escape this hell on earth. The game combines horror atmosphere, action adventure, and role-playing elements to provide players with a tense and exciting gaming experience.",
+                "media.title": "Media",
+                "media.videoTitle": "Latest Game Trailer",
+                "support.title": "Support Us",
+                "support.description": "Your support is our motivation to continue development! We are committed to bringing players the best gaming experience. Every support will help us improve game quality and add more exciting content.",
                 "follow.title": "Follow Us",
                 "follow.bilibili": "Bilibili",
-                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'Tartarus' Torment' is the project's working title."
+                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'Tartarus' Torment' is the project's working title.",
+                "auth.login": "Login",
+                "auth.register": "Register",
+                "auth.username": "Username",
+                "auth.password": "Password",
+                "auth.confirmPassword": "Confirm Password",
+                "auth.noAccount": "No account?",
+                "auth.haveAccount": "Already have an account?"
             },
             ja: {
                 "nav.home": "ホーム",
                 "nav.about": "ゲームについて",
                 "nav.media": "メディア",
-                "nav.news": "ニュース",
-                "hero.title": "冥界へ潜入し、罰に直面せよ",
-                "hero.description": "ギリシャ神話を基にしたダークアクションRPG。絶望と裏切りの果ての救済を求め、タルタロスの無限の深淵を探索し、あなただけの神話を定義せよ。",
+                "nav.support": "サポート",
+                "nav.login": "ログイン",
+                "nav.register": "登録",
+                "hero.title": "\"タルタロス\"という名の制御からの脱出",
+                "hero.description": "Unityをベースにした2DホラーアクションRPG。",
                 "hero.cta": "最新情報をフォロー",
+                "about.title": "ゲームについて",
+                "about.description": "『タルタロスの刑』では、プレイヤーは謎の施設「タルタロス」に閉じ込められた被験者を演じます。この施設には無数の恐怖の秘密と致命的な実験が隠されています。謎を解き、追跡を避け、他の生存者と協力して、最終的にこの地上の地獄から脱出する必要があります。ゲームはホラー雰囲気、アクションアドベンチャー、ロールプレイング要素を組み合わせ、プレイヤーに緊張感と興奮をもたらします。",
+                "media.title": "メディア",
+                "media.videoTitle": "最新ゲームトレーラー",
+                "support.title": "サポート",
+                "support.description": "あなたのサポートは私たちの開発の原動力です！私たちはプレイヤーに最高のゲーム体験を提供することに取り組んでいます。すべてのサポートがゲームの品質向上とより多くの素晴らしいコンテンツの追加に役立ちます。",
                 "follow.title": "フォローする",
                 "follow.bilibili": "ビリビリ",
-                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'タルタロスの刑' はプロジェクトの仮称です。"
+                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'タルタロスの刑' はプロジェクトの仮称です。",
+                "auth.login": "ログイン",
+                "auth.register": "登録",
+                "auth.username": "ユーザー名",
+                "auth.password": "パスワード",
+                "auth.confirmPassword": "パスワード確認",
+                "auth.noAccount": "アカウントを持っていませんか？",
+                "auth.haveAccount": "既にアカウントをお持ちですか？"
             },
             ru: {
                 "nav.home": "Главная",
                 "nav.about": "Об игре",
                 "nav.media": "Медиа",
-                "nav.news": "Новости",
-                "hero.title": "Спустись в Аид, прими свою кару",
-                "hero.description": "Тёмная action-RPG по мотивам греческой мифологии. Исследуй бесконечную бездну Тартара, ищи искупление средь отчаяния и предательства, определи свою собственную мифологию.",
+                "nav.support": "Поддержать нас",
+                "nav.login": "Войти",
+                "nav.register": "Регистрация",
+                "hero.title": "Сбегите из-под контроля «Тартара»",
+                "hero.description": "2D хоррор action-RPG, созданная на Unity.",
                 "hero.cta": "Следите за обновлениями",
+                "about.title": "Об игре",
+                "about.description": "В 'Казни Тартара' игроки берут на себя роль подопытного, запертого в таинственном объекте 'Тартар'. Этот объект скрывает бесчисленные ужасные секреты и смертельные эксперименты. Вам нужно решать головоломки, избегать погони, сотрудничать с другими выжившими и в конечном итоге сбежать из этого ада на земле. Игра сочетает в себе атмосферу ужаса, приключенческий экшен и элементы ролевой игры, чтобы подарить игрокам напряженный и захватывающий игровой опыт.",
+                "media.title": "Медиа",
+                "media.videoTitle": "Последний трейлер игры",
+                "support.title": "Поддержать нас",
+                "support.description": "Ваша поддержка - наша мотивация продолжать разработку! Мы стремимся предоставить игрокам лучший игровой опыт. Каждая поддержка поможет нам улучшить качество игры и добавить больше интересного контента.",
                 "follow.title": "Подписывайтесь",
                 "follow.bilibili": "Bilibili",
-                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'Казнь Тартара' - рабочее название проекта."
+                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'Казнь Тартара' - рабочее название проекта.",
+                "auth.login": "Войти",
+                "auth.register": "Регистрация",
+                "auth.username": "Имя пользователя",
+                "auth.password": "Пароль",
+                "auth.confirmPassword": "Подтвердите пароль",
+                "auth.noAccount": "Нет аккаунта?",
+                "auth.haveAccount": "Уже есть аккаунт?"
             },
             de: {
                 "nav.home": "Startseite",
                 "nav.about": "Über das Spiel",
                 "nav.media": "Medien",
-                "nav.news": "Neuigkeiten",
-                "hero.title": "Steige in den Hades hinab, stelle dich deiner Strafe",
-                "hero.description": "Ein düsteres Action-Rollenspiel basierend auf der griechischen Mythologie. Erforsche den endlosen Abgrund des Tartaros, suche Erlösung inmitten von Verzweiflung und Verrat und definiere deinen eigenen Mythos.",
+                "nav.support": "Unterstütze uns",
+                "nav.login": "Anmelden",
+                "nav.register": "Registrieren",
+                "hero.title": "Entkomme der Kontrolle von \"Tartarus\"",
+                "hero.description": "Ein 2D-Horror-Action-Rollenspiel basierend auf Unity.",
                 "hero.cta": "Folge uns für Updates",
+                "about.title": "Über das Spiel",
+                "about.description": "In 'Tartarus' Torment' übernehmen die Spieler die Rolle eines Testsubjekts, das in der geheimnisvollen Einrichtung 'Tartarus' gefangen ist. Diese Einrichtung verbirgt unzählige schreckliche Geheimnisse und tödliche Experimente. Sie müssen Rätsel lösen, der Verfolgung entgehen, mit anderen Überlebenden zusammenarbeiten und schließlich dieser Hölle auf Erden entkommen. Das Spiel kombiniert Horror-Atmosphäre, Action-Abenteuer und Rollenspielelemente, um den Spielern ein spannendes und aufregendes Spielerlebnis zu bieten.",
+                "media.title": "Medien",
+                "media.videoTitle": "Neuester Spiel-Trailer",
+                "support.title": "Unterstütze uns",
+                "support.description": "Ihre Unterstützung ist unsere Motivation zur Weiterentwicklung! Wir sind bestrebt, den Spielern das beste Spielerlebnis zu bieten. Jede Unterstützung hilft uns, die Spielqualität zu verbessern und weitere spannende Inhalte hinzuzufügen.",
                 "follow.title": "Folge uns",
                 "follow.bilibili": "Bilibili",
-                "footer.copyright": "© 2026 Tartarus' Torment Project. Alle Rechte vorbehalten. | 'Tartarus' Torment' ist der Arbeitstitel des Projekts."
+                "footer.copyright": "© 2026 Tartarus' Torment Project. Alle Rechte vorbehalten. | 'Tartarus' Torment' ist der Arbeitstitel des Projekts.",
+                "auth.login": "Anmelden",
+                "auth.register": "Registrieren",
+                "auth.username": "Benutzername",
+                "auth.password": "Passwort",
+                "auth.confirmPassword": "Passwort bestätigen",
+                "auth.noAccount": "Kein Konto?",
+                "auth.haveAccount": "Bereits ein Konto?"
             }
         };
 
-        // Logo文件映射（根据您的实际文件名修改）
+        // Logo文件映射
         const logoFiles = {
-            'zh': './logo-zh.png',    // 中文Logo
-            'en': './logo-en.png',    // 英文Logo
-            'ja': './logo-ja.png',    // 日文Logo
-            'ru': './logo-ru.png',    // 俄文Logo
-            'de': './logo-de.png'     // 德文Logo
+            'zh': 'https://i.ibb.co/qYRmkZ6R/image.png',
+            'en': 'https://i.ibb.co/XxVBZQs9/image.png',
+            'ja': 'https://i.ibb.co/qM1ZrKcH/image.png',
+            'ru': 'https://i.ibb.co/vGc3gss/image.png',
+            'de': 'https://i.ibb.co/VWMqFQzH/image.png'
         };
 
         // 当前语言
@@ -410,22 +914,17 @@
 
         // 初始化语言
         function initLanguage() {
-            // 从本地存储获取保存的语言设置
             const savedLang = localStorage.getItem('game_language');
             if (savedLang && translations[savedLang]) {
                 currentLang = savedLang;
             }
 
-            // 设置选择框
             document.getElementById('languageSelect').value = currentLang;
-
-            // 应用语言
             applyLanguage(currentLang);
         }
 
         // 应用语言切换
         function applyLanguage(lang) {
-            // 1. 更新所有文本
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
@@ -433,7 +932,6 @@
                 }
             });
 
-            // 2. 更新Logo图片
             const navLogo = document.getElementById('nav-logo');
             const heroLogo = document.getElementById('hero-logo');
 
@@ -442,41 +940,306 @@
                 heroLogo.src = logoFiles[lang];
             }
 
-            // 3. 更新页面语言属性
             document.documentElement.lang = lang;
-
-            // 4. 保存到本地存储
             localStorage.setItem('game_language', lang);
-
-            // 5. 更新当前语言变量
             currentLang = lang;
         }
 
         // 语言选择器事件监听
         document.getElementById('languageSelect').addEventListener('change', function (e) {
-            const selectedLang = e.target.value;
-            applyLanguage(selectedLang);
+            applyLanguage(e.target.value);
         });
+
+        // ==================== 登录/注册系统 ====================
+
+        // 用户数据存储（使用localStorage模拟）
+        const STORAGE_KEY = 'tartarus_users';
+
+        // 获取所有用户
+        function getUsers() {
+            const users = localStorage.getItem(STORAGE_KEY);
+            return users ? JSON.parse(users) : [];
+        }
+
+        // 保存用户
+        function saveUsers(users) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+        }
+
+        // 检查用户名是否存在
+        function usernameExists(username) {
+            const users = getUsers();
+            return users.some(user => user.username === username);
+        }
+
+        // 验证用户名
+        function validateUsername(username) {
+            if (!username.trim()) {
+                return { valid: false, message: "用户名不能为空" };
+            }
+            if (username.length > 10) {
+                return { valid: false, message: "用户名不能超过10个字符" };
+            }
+            if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                return { valid: false, message: "用户名只能包含字母、数字和下划线" };
+            }
+            return { valid: true };
+        }
+
+        // 验证密码
+        function validatePassword(password) {
+            if (!password) {
+                return { valid: false, message: "密码不能为空" };
+            }
+            if (password.length > 15) {
+                return { valid: false, message: "密码不能超过15个字符" };
+            }
+            if (!/(?=.*[a-zA-Z])(?=.*\d)/.test(password)) {
+                return { valid: false, message: "密码必须包含英文和数字" };
+            }
+            return { valid: true };
+        }
+
+        // 显示错误信息
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        // 隐藏错误信息
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.style.display = 'none';
+        }
+
+        // 切换表单
+        function switchForm(formType) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const modalTitle = document.getElementById('modalTitle');
+
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                modalTitle.textContent = document.querySelector('[data-i18n="auth.login"]').textContent || '登录';
+
+                // 清除错误信息
+                hideError('loginUsernameError');
+                hideError('loginPasswordError');
+            } else {
+                loginForm.classList.remove('active');
+                registerForm.classList.add('active');
+                loginTab.classList.remove('active');
+                registerTab.classList.add('active');
+                modalTitle.textContent = document.querySelector('[data-i18n="auth.register"]').textContent || '注册';
+
+                // 清除错误信息
+                hideError('registerUsernameError');
+                hideError('registerPasswordError');
+                hideError('confirmPasswordError');
+            }
+        }
+
+        // 打开模态框
+        function openModal() {
+            document.getElementById('authModal').style.display = 'flex';
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('authModal').style.display = 'none';
+
+            // 清除表单
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('registerUsername').value = '';
+            document.getElementById('registerPassword').value = '';
+            document.getElementById('confirmPassword').value = '';
+
+            // 清除错误信息
+            hideError('loginUsernameError');
+            hideError('loginPasswordError');
+            hideError('registerUsernameError');
+            hideError('registerPasswordError');
+            hideError('confirmPasswordError');
+        }
+
+        // 登录处理
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // 验证用户名
+            const usernameValidation = validateUsername(username);
+            if (!usernameValidation.valid) {
+                showError('loginUsernameError', usernameValidation.message);
+                return;
+            }
+            hideError('loginUsernameError');
+
+            // 验证密码
+            const passwordValidation = validatePassword(password);
+            if (!passwordValidation.valid) {
+                showError('loginPasswordError', passwordValidation.message);
+                return;
+            }
+            hideError('loginPasswordError');
+
+            // 检查用户是否存在
+            const users = getUsers();
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (!user) {
+                showError('loginPasswordError', "用户名或密码错误");
+                return;
+            }
+
+            // 登录成功
+            alert(`欢迎回来，${username}！`);
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            closeModal();
+
+            // 更新导航栏显示
+            updateAuthUI(user);
+        }
+
+        // 注册处理
+        function handleRegister(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // 验证用户名
+            const usernameValidation = validateUsername(username);
+            if (!usernameValidation.valid) {
+                showError('registerUsernameError', usernameValidation.message);
+                return;
+            }
+            hideError('registerUsernameError');
+
+            // 检查用户名是否已存在
+            if (usernameExists(username)) {
+                showError('registerUsernameError', "用户名已存在");
+                return;
+            }
+
+            // 验证密码
+            const passwordValidation = validatePassword(password);
+            if (!passwordValidation.valid) {
+                showError('registerPasswordError', passwordValidation.message);
+                return;
+            }
+            hideError('registerPasswordError');
+
+            // 验证确认密码
+            if (password !== confirmPassword) {
+                showError('confirmPasswordError', "两次输入的密码不一致");
+                return;
+            }
+            hideError('confirmPasswordError');
+
+            // 保存用户
+            const users = getUsers();
+            const newUser = {
+                username,
+                password,
+                createdAt: new Date().toISOString()
+            };
+
+            users.push(newUser);
+            saveUsers(users);
+
+            // 注册成功
+            alert(`注册成功！欢迎加入，${username}！`);
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            closeModal();
+
+            // 更新导航栏显示
+            updateAuthUI(newUser);
+        }
+
+        // 更新认证UI
+        function updateAuthUI(user) {
+            const authButtons = document.querySelector('.auth-buttons');
+            if (user) {
+                authButtons.innerHTML = `
+                            <span style="color: #00ccff; margin-right: 10px;">欢迎，${user.username}</span>
+                            <button class="auth-btn btn-login" id="logoutBtn">退出</button>
+                        `;
+
+                document.getElementById('logoutBtn').addEventListener('click', () => {
+                    localStorage.removeItem('currentUser');
+                    location.reload();
+                });
+            }
+        }
 
         // 页面加载时初始化
         document.addEventListener('DOMContentLoaded', function () {
+            // 初始化语言
             initLanguage();
 
             // 图片加载失败处理
             document.querySelectorAll('img').forEach(img => {
                 img.onerror = function () {
                     console.error(`图片加载失败: ${this.src}`);
-                    // 可以设置一个默认Logo
                     if (this.classList.contains('logo-img') || this.classList.contains('hero-logo')) {
-                        this.src = './logo-default.png';
+                        this.src = 'https://i.ibb.co/qYRmkZ6R/image.png';
                     }
                 };
             });
-        });
 
-        // 简单的语言选择切换示例（保留原有功能）
-        document.getElementById('languageSelect').addEventListener('change', function () {
-            console.log('语言已切换至: ' + this.options[this.selectedIndex].text);
+            // 检查当前登录状态
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                updateAuthUI(JSON.parse(currentUser));
+            }
+
+            // 登录/注册按钮事件
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                switchForm('login');
+                openModal();
+            });
+
+            document.getElementById('registerBtn').addEventListener('click', () => {
+                switchForm('register');
+                openModal();
+            });
+
+            // 关闭模态框
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('authModal').addEventListener('click', (e) => {
+                if (e.target.id === 'authModal') closeModal();
+            });
+
+            // 切换表单
+            document.getElementById('loginTab').addEventListener('click', () => switchForm('login'));
+            document.getElementById('registerTab').addEventListener('click', () => switchForm('register'));
+            document.getElementById('switchToRegister').addEventListener('click', () => switchForm('register'));
+            document.getElementById('switchToLogin').addEventListener('click', () => switchForm('login'));
+
+            // 表单提交
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+
+            // 输入时清除错误信息
+            ['loginUsername', 'loginPassword', 'registerUsername', 'registerPassword', 'confirmPassword'].forEach(id => {
+                document.getElementById(id).addEventListener('input', function () {
+                    const errorId = id + 'Error';
+                    if (document.getElementById(errorId)) {
+                        hideError(errorId);
+                    }
+                });
+            });
         });
     </script>
 </body>
