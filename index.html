@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tartarus' Torment | 塔尔塔罗斯之刑 - 官方网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式与重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%);
+            color: #e6e6e6;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* 容器 */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 1. 顶部导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(13, 13, 13, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 40px; /* LOGO高度，会自动适应不同语言版本的比例 */
+            width: auto;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #00ccff, #0066ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+            .nav-links a {
+                font-weight: 500;
+                padding: 5px 0;
+                border-bottom: 2px solid transparent;
+            }
+
+                .nav-links a:hover {
+                    color: #00ccff;
+                    border-bottom-color: #00ccff;
+                }
+
+        .language-select {
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #1a1a1a;
+            color: #e6e6e6;
+            cursor: pointer;
+            min-width: 120px;
+        }
+
+        /* 2. 英雄区域 (CG插图背景) */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .cg-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero-logo {
+            max-width: 300px;
+            width: 100%;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 10px rgba(0, 204, 255, 0.5));
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #ccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, #0066ff, #00ccff);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0, 102, 255, 0.6);
+            }
+
+        /* 3. 关注我们区域 */
+        .follow-section {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .social-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 140px;
+            height: 140px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+            .social-btn:hover {
+                background-color: rgba(0, 204, 255, 0.1);
+                border-color: #00ccff;
+                transform: translateY(-10px) scale(1.05);
+            }
+
+            .social-btn i {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+
+            .social-btn .platform {
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+        /* 为不同平台设置特色颜色 */
+        .btn-qq {
+            color: #12b7f5;
+        }
+
+        .btn-bilibili {
+            color: #fb7299;
+        }
+
+        .btn-youtube {
+            color: #ff0000;
+        }
+
+        .btn-x {
+            color: #000000;
+            background: #f0f0f0;
+            border-radius: 10px;
+            padding: 2px;
+        }
+            /* 修正X图标样式 - 确保正确显示 */
+            .btn-x i {
+                color: #000000;
+            }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo-section">
+                <!-- 多语言Logo，默认显示中文版 -->
+                <img src="./logo-zh.png" alt="Tartarus' Torment Logo" class="logo-img" id="nav-logo">
+                <div class="game-title">TARTARUS' TORMENT</div>
+            </div>
+            <div class="nav-links">
+                <a href="#home" data-i18n="nav.home">首页</a>
+                <a href="#about" data-i18n="nav.about">关于游戏</a>
+                <a href="#media" data-i18n="nav.media">宣传视频</a>
+                <a href="#news" data-i18n="nav.news">新闻动态</a>
+            </div>
+            <!-- 语言选择器 - 添加更多语言选项 -->
+            <select class="language-select" id="languageSelect">
+                <option value="zh" selected>中文</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="ru">Русский</option>
+                <option value="de">Deutsch</option>
+            </select>
+        </div>
+    </nav>
+
+    <!-- 2. 英雄区域 -->
+    <section class="hero" id="home">
+        <!-- 多语言背景图（可选） -->
+        <img src="./your-cg-image.jpg" alt="Tartarus' Torment CG" class="cg-bg">
+        <div class="hero-content">
+            <!-- 英雄区域Logo -->
+            <img src="./logo-zh.png" alt="Tartarus' Torment Logo" class="hero-logo" id="hero-logo">
+            <h1 data-i18n="hero.title">深入冥府，直面你的刑罚</h1>
+            <p data-i18n="hero.description">一款基于古希腊神话的暗黑动作角色扮演游戏。探索无尽深渊塔尔塔罗斯，在绝望与背叛中寻求救赎，定义属于你的神话。</p>
+            <a href="#follow" class="cta-button" data-i18n="hero.cta">关注我们，获取最新资讯</a>
+        </div>
+    </section>
+
+    <!-- 3. 关注我们区域 -->
+    <section class="follow-section" id="follow">
+        <div class="container">
+            <h2 class="section-title" data-i18n="follow.title">关注我们</h2>
+            <div class="social-buttons">
+                <a href="https://wpa.qq.com/msgrd?v=3&uin=1492626620&site=qq&menu=yes" target="_blank" class="social-btn btn-qq">
+                    <i class="fab fa-qq"></i>
+                    <div class="platform">QQ</div>
+                    <div class="id">1492626620</div>
+                </a>
+                <a href="https://space.bilibili.com/115000016" target="_blank" class="social-btn btn-bilibili">
+                    <i class="fab fa-bilibili"></i>
+                    <div class="platform" data-i18n="follow.bilibili">哔哩哔哩</div>
+                    <div class="id">@用户主页</div>
+                </a>
+                <a href="https://www.youtube.com/@HjianKKK" target="_blank" class="social-btn btn-youtube">
+                    <i class="fab fa-youtube"></i>
+                    <div class="platform">YouTube</div>
+                    <div class="id">@HjianKKK</div>
+                </a>
+                <a href="https://x.com/GCi01TmxmsKodRY" target="_blank" class="social-btn btn-x">
+                    <!-- 使用正确的X(Twitter)图标 -->
+                    <i class="fab fa-x-twitter"></i>
+                    <div class="platform">X (Twitter)</div>
+                    <div class="id">@GCi01TmxmsKodRY</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p data-i18n="footer.copyright">© 2026 Tartarus' Torment Project. All rights reserved. | "塔尔塔罗斯之刑" 是该项目暂定名称。</p>
+        </div>
+    </footer>
+
+    <script>
+        // ==================== 多语言系统 ====================
+
+        // 语言配置对象
+        const translations = {
+            zh: {
+                // 导航栏
+                "nav.home": "首页",
+                "nav.about": "关于游戏",
+                "nav.media": "宣传视频",
+                "nav.news": "新闻动态",
+
+                // 英雄区域
+                "hero.title": "深入冥府，直面你的刑罚",
+                "hero.description": "一款基于古希腊神话的暗黑动作角色扮演游戏。探索无尽深渊塔尔塔罗斯，在绝望与背叛中寻求救赎，定义属于你的神话。",
+                "hero.cta": "关注我们，获取最新资讯",
+
+                // 关注我们
+                "follow.title": "关注我们",
+                "follow.bilibili": "哔哩哔哩",
+
+                // 页脚
+                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | '塔尔塔罗斯之刑' 是该项目暂定名称。"
+            },
+            en: {
+                "nav.home": "Home",
+                "nav.about": "About",
+                "nav.media": "Media",
+                "nav.news": "News",
+                "hero.title": "Descend into Hades, Face Your Punishment",
+                "hero.description": "A dark action RPG based on Greek mythology. Explore the endless abyss of Tartarus, seek redemption amidst despair and betrayal, and define your own myth.",
+                "hero.cta": "Follow Us for Updates",
+                "follow.title": "Follow Us",
+                "follow.bilibili": "Bilibili",
+                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'Tartarus' Torment' is the project's working title."
+            },
+            ja: {
+                "nav.home": "ホーム",
+                "nav.about": "ゲームについて",
+                "nav.media": "メディア",
+                "nav.news": "ニュース",
+                "hero.title": "冥界へ潜入し、罰に直面せよ",
+                "hero.description": "ギリシャ神話を基にしたダークアクションRPG。絶望と裏切りの果ての救済を求め、タルタロスの無限の深淵を探索し、あなただけの神話を定義せよ。",
+                "hero.cta": "最新情報をフォロー",
+                "follow.title": "フォローする",
+                "follow.bilibili": "ビリビリ",
+                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'タルタロスの刑' はプロジェクトの仮称です。"
+            },
+            ru: {
+                "nav.home": "Главная",
+                "nav.about": "Об игре",
+                "nav.media": "Медиа",
+                "nav.news": "Новости",
+                "hero.title": "Спустись в Аид, прими свою кару",
+                "hero.description": "Тёмная action-RPG по мотивам греческой мифологии. Исследуй бесконечную бездну Тартара, ищи искупление средь отчаяния и предательства, определи свою собственную мифологию.",
+                "hero.cta": "Следите за обновлениями",
+                "follow.title": "Подписывайтесь",
+                "follow.bilibili": "Bilibili",
+                "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | 'Казнь Тартара' - рабочее название проекта."
+            },
+            de: {
+                "nav.home": "Startseite",
+                "nav.about": "Über das Spiel",
+                "nav.media": "Medien",
+                "nav.news": "Neuigkeiten",
+                "hero.title": "Steige in den Hades hinab, stelle dich deiner Strafe",
+                "hero.description": "Ein düsteres Action-Rollenspiel basierend auf der griechischen Mythologie. Erforsche den endlosen Abgrund des Tartaros, suche Erlösung inmitten von Verzweiflung und Verrat und definiere deinen eigenen Mythos.",
+                "hero.cta": "Folge uns für Updates",
+                "follow.title": "Folge uns",
+                "follow.bilibili": "Bilibili",
+                "footer.copyright": "© 2026 Tartarus' Torment Project. Alle Rechte vorbehalten. | 'Tartarus' Torment' ist der Arbeitstitel des Projekts."
+            }
+        };
+
+        // Logo文件映射（根据您的实际文件名修改）
+        const logoFiles = {
+            'zh': './logo-zh.png',    // 中文Logo
+            'en': './logo-en.png',    // 英文Logo
+            'ja': './logo-ja.png',    // 日文Logo
+            'ru': './logo-ru.png',    // 俄文Logo
+            'de': './logo-de.png'     // 德文Logo
+        };
+
+        // 当前语言
+        let currentLang = 'zh';
+
+        // 初始化语言
+        function initLanguage() {
+            // 从本地存储获取保存的语言设置
+            const savedLang = localStorage.getItem('game_language');
+            if (savedLang && translations[savedLang]) {
+                currentLang = savedLang;
+            }
+
+            // 设置选择框
+            document.getElementById('languageSelect').value = currentLang;
+
+            // 应用语言
+            applyLanguage(currentLang);
+        }
+
+        // 应用语言切换
+        function applyLanguage(lang) {
+            // 1. 更新所有文本
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // 2. 更新Logo图片
+            const navLogo = document.getElementById('nav-logo');
+            const heroLogo = document.getElementById('hero-logo');
+
+            if (logoFiles[lang]) {
+                navLogo.src = logoFiles[lang];
+                heroLogo.src = logoFiles[lang];
+            }
+
+            // 3. 更新页面语言属性
+            document.documentElement.lang = lang;
+
+            // 4. 保存到本地存储
+            localStorage.setItem('game_language', lang);
+
+            // 5. 更新当前语言变量
+            currentLang = lang;
+        }
+
+        // 语言选择器事件监听
+        document.getElementById('languageSelect').addEventListener('change', function (e) {
+            const selectedLang = e.target.value;
+            applyLanguage(selectedLang);
+        });
+
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function () {
+            initLanguage();
+
+            // 图片加载失败处理
+            document.querySelectorAll('img').forEach(img => {
+                img.onerror = function () {
+                    console.error(`图片加载失败: ${this.src}`);
+                    // 可以设置一个默认Logo
+                    if (this.classList.contains('logo-img') || this.classList.contains('hero-logo')) {
+                        this.src = './logo-default.png';
+                    }
+                };
+            });
+        });
+
+        // 简单的语言选择切换示例（保留原有功能）
+        document.getElementById('languageSelect').addEventListener('change', function () {
+            console.log('语言已切换至: ' + this.options[this.selectedIndex].text);
+        });
+    </script>
+</body>
+</html>
