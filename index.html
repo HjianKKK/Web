@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tartarus' Torment | 塔尔塔罗斯之刑 - 官方网站</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- 引入bcryptjs用于密码加密 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
-
-    <!-- 引入Supabase客户端库 -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <style>
         /* 基础样式与重置 */
         * {
@@ -67,7 +60,7 @@
         }
 
         .logo-img {
-            height: 60px;
+            height: 60px; /* 放大的Logo高度 */
             width: auto;
             transition: opacity 0.3s ease;
         }
@@ -92,7 +85,6 @@
         .auth-buttons {
             display: flex;
             gap: 15px;
-            align-items: center;
         }
 
         .auth-btn {
@@ -121,34 +113,6 @@
 
             .btn-register:hover {
                 box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
-            }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 15px;
-            background-color: rgba(0, 204, 255, 0.1);
-            border-radius: 5px;
-            border: 1px solid #00ccff;
-        }
-
-            .user-info span {
-                font-weight: 500;
-            }
-
-        .btn-logout {
-            padding: 5px 10px;
-            background-color: #ff4444;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-            .btn-logout:hover {
-                background-color: #ff6666;
             }
 
         .language-select {
@@ -189,7 +153,7 @@
         }
 
         .hero-logo {
-            max-width: 400px;
+            max-width: 400px; /* 放大的英雄区域Logo */
             width: 100%;
             margin-bottom: 30px;
             filter: drop-shadow(0 0 10px rgba(0, 204, 255, 0.5));
@@ -575,38 +539,6 @@
                 .form-switch a:hover {
                     text-decoration: underline;
                 }
-
-        /* 消息提示 */
-        .message {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            border-radius: 5px;
-            color: white;
-            font-weight: 500;
-            z-index: 3000;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.3s ease;
-        }
-
-            .message.show {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-            .message.success {
-                background-color: #4CAF50;
-            }
-
-            .message.error {
-                background-color: #f44336;
-            }
-
-            .message.info {
-                background-color: #2196F3;
-            }
     </style>
 </head>
 <body>
@@ -623,8 +555,7 @@
                 <a href="#media" data-i18n="nav.media">宣传视频</a>
                 <a href="#support" data-i18n="nav.support">支持我们</a>
 
-                <!-- 用户登录状态显示 -->
-                <div class="auth-buttons" id="authButtons">
+                <div class="auth-buttons">
                     <button class="auth-btn btn-login" id="loginBtn" data-i18n="nav.login">登录</button>
                     <button class="auth-btn btn-register" id="registerBtn" data-i18n="nav.register">注册</button>
                 </div>
@@ -640,9 +571,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- 消息提示框 -->
-    <div class="message" id="message"></div>
 
     <!-- 2. 英雄区域 -->
     <section class="hero" id="home">
@@ -766,17 +694,17 @@
             <form class="auth-form active" id="loginForm">
                 <div class="form-group">
                     <label class="form-label" for="loginUsername" data-i18n="auth.username">用户名</label>
-                    <input type="text" class="form-input" id="loginUsername" maxlength="20" required>
+                    <input type="text" class="form-input" id="loginUsername" maxlength="10">
                     <div class="form-error" id="loginUsernameError"></div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="loginPassword" data-i18n="auth.password">密码</label>
-                    <input type="password" class="form-input" id="loginPassword" maxlength="30" required>
+                    <input type="password" class="form-input" id="loginPassword" maxlength="15">
                     <div class="form-error" id="loginPasswordError"></div>
                 </div>
 
-                <button type="submit" class="form-submit" id="loginSubmit" data-i18n="auth.login">登录</button>
+                <button type="submit" class="form-submit" data-i18n="auth.login">登录</button>
 
                 <div class="form-switch">
                     <span data-i18n="auth.noAccount">还没有账户？</span>
@@ -788,23 +716,23 @@
             <form class="auth-form" id="registerForm">
                 <div class="form-group">
                     <label class="form-label" for="registerUsername" data-i18n="auth.username">用户名</label>
-                    <input type="text" class="form-input" id="registerUsername" maxlength="20" required>
+                    <input type="text" class="form-input" id="registerUsername" maxlength="10">
                     <div class="form-error" id="registerUsernameError"></div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="registerPassword" data-i18n="auth.password">密码</label>
-                    <input type="password" class="form-input" id="registerPassword" maxlength="30" required>
+                    <input type="password" class="form-input" id="registerPassword" maxlength="15">
                     <div class="form-error" id="registerPasswordError"></div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="confirmPassword" data-i18n="auth.confirmPassword">确认密码</label>
-                    <input type="password" class="form-input" id="confirmPassword" maxlength="30" required>
+                    <input type="password" class="form-input" id="confirmPassword" maxlength="15">
                     <div class="form-error" id="confirmPasswordError"></div>
                 </div>
 
-                <button type="submit" class="form-submit" id="registerSubmit" data-i18n="auth.register">注册</button>
+                <button type="submit" class="form-submit" data-i18n="auth.register">注册</button>
 
                 <div class="form-switch">
                     <span data-i18n="auth.haveAccount">已有账户？</span>
@@ -815,64 +743,44 @@
     </div>
 
     <script>
-        // ==================== Supabase 配置 ====================
-        // 使用您提供的Supabase配置
-        const supabaseUrl = 'https://wcrfsnfghagchtcteylt.supabase.co';
-        const supabaseKey = 'sb_publishable_LxWLT76W1d7yJAWWqxMRSw_9MoCIWK6'; // 您的可发布密钥
-        const TABLE_NAME = 'users'; // 数据库表名
-
-        console.log('🚀 正在初始化Supabase客户端...');
-        console.log('🔑 Supabase URL:', supabaseUrl);
-        console.log('🔐 Supabase Key:', supabaseKey ? '已设置' : '未设置');
-        console.log('📁 数据库表名:', TABLE_NAME);
-
-        // 创建Supabase客户端
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-        // 检查Supabase连接状态
-        async function testSupabaseConnection() {
-            console.log('🔍 正在测试Supabase连接...');
-            try {
-                const { data, error } = await supabase
-                    .from(TABLE_NAME)
-                    .select('count', { count: 'exact', head: true });
-
-                if (error) {
-                    console.error('❌ Supabase连接失败:', error);
-                    return false;
-                }
-
-                console.log('✅ Supabase连接成功！');
-                return true;
-            } catch (error) {
-                console.error('❌ Supabase连接异常:', error);
-                return false;
-            }
-        }
-
         // ==================== 多语言系统 ====================
+
+        // 语言配置对象
         const translations = {
             zh: {
+                // 导航栏
                 "nav.home": "首页",
                 "nav.about": "关于游戏",
                 "nav.media": "宣传视频",
                 "nav.support": "支持我们",
                 "nav.login": "登录",
                 "nav.register": "注册",
-                "nav.welcome": "欢迎, ",
-                "nav.logout": "退出",
+
+                // 英雄区域
                 "hero.title": "逃离名为\"塔尔塔罗斯\"的控制",
                 "hero.description": "一款基于Unity的2D恐怖动作角色扮演游戏。",
                 "hero.cta": "关注我们，获取最新资讯",
+
+                // 关于游戏区域
                 "about.title": "关于游戏",
                 "about.description": "在《塔尔塔罗斯之刑》中，玩家将扮演一名被困在神秘设施\"塔尔塔罗斯\"中的实验体。这座设施隐藏着无数恐怖的秘密和致命的实验。你需要解开谜题，躲避追捕，与其他幸存者合作，最终逃离这个人间地狱。游戏结合了恐怖氛围、动作冒险和角色扮演元素，为玩家带来紧张刺激的游戏体验。",
+
+                // 宣传视频区域
                 "media.title": "宣传视频",
                 "media.videoTitle": "游戏最新预告片",
+
+                // 支持我们区域
                 "support.title": "支持我们",
                 "support.description": "您的支持是我们持续开发的动力！我们致力于为玩家带来最佳的游戏体验，每一份支持都将帮助我们改进游戏品质，添加更多精彩内容。",
+
+                // 关注我们
                 "follow.title": "关注我们",
                 "follow.bilibili": "哔哩哔哩",
+
+                // 页脚
                 "footer.copyright": "© 2026 Tartarus' Torment Project. All rights reserved. | \"塔尔塔罗斯之刑\" 是该项目暂定名称。",
+
+                // 登录/注册
                 "auth.login": "登录",
                 "auth.register": "注册",
                 "auth.username": "用户名",
@@ -888,8 +796,6 @@
                 "nav.support": "Support Us",
                 "nav.login": "Login",
                 "nav.register": "Register",
-                "nav.welcome": "Welcome, ",
-                "nav.logout": "Logout",
                 "hero.title": "Escape the Control of \"Tartarus\"",
                 "hero.description": "A 2D horror action RPG based on Unity.",
                 "hero.cta": "Follow Us for Updates",
@@ -917,8 +823,6 @@
                 "nav.support": "サポート",
                 "nav.login": "ログイン",
                 "nav.register": "登録",
-                "nav.welcome": "ようこそ, ",
-                "nav.logout": "ログアウト",
                 "hero.title": "\"タルタロス\"という名の制御からの脱出",
                 "hero.description": "Unityをベースにした2DホラーアクションRPG。",
                 "hero.cta": "最新情報をフォロー",
@@ -946,8 +850,6 @@
                 "nav.support": "Поддержать нас",
                 "nav.login": "Войти",
                 "nav.register": "Регистрация",
-                "nav.welcome": "Добро пожаловать, ",
-                "nav.logout": "Выйти",
                 "hero.title": "Сбегите из-под контроля «Тартара»",
                 "hero.description": "2D хоррор action-RPG, созданная на Unity.",
                 "hero.cta": "Следите за обновлениями",
@@ -975,8 +877,6 @@
                 "nav.support": "Unterstütze uns",
                 "nav.login": "Anmelden",
                 "nav.register": "Registrieren",
-                "nav.welcome": "Willkommen, ",
-                "nav.logout": "Abmelden",
                 "hero.title": "Entkomme der Kontrolle von \"Tartarus\"",
                 "hero.description": "Ein 2D-Horror-Action-Rollenspiel basierend auf Unity.",
                 "hero.cta": "Folge uns für Updates",
@@ -1044,599 +944,302 @@
             currentLang = lang;
         }
 
-        // ==================== 消息提示系统 ====================
-        function showMessage(text, isSuccess = true) {
-            const messageEl = document.getElementById('message');
-            messageEl.textContent = text;
-            messageEl.className = 'message ' + (isSuccess ? 'success' : 'error');
-            messageEl.classList.add('show');
+        // 语言选择器事件监听
+        document.getElementById('languageSelect').addEventListener('change', function (e) {
+            applyLanguage(e.target.value);
+        });
 
-            setTimeout(() => {
-                messageEl.classList.remove('show');
-            }, 3000);
+        // ==================== 登录/注册系统 ====================
+
+        // 用户数据存储（使用localStorage模拟）
+        const STORAGE_KEY = 'tartarus_users';
+
+        // 获取所有用户
+        function getUsers() {
+            const users = localStorage.getItem(STORAGE_KEY);
+            return users ? JSON.parse(users) : [];
         }
 
-        // ==================== 表单验证工具 ====================
+        // 保存用户
+        function saveUsers(users) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+        }
+
+        // 检查用户名是否存在
+        function usernameExists(username) {
+            const users = getUsers();
+            return users.some(user => user.username === username);
+        }
+
+        // 验证用户名
         function validateUsername(username) {
-            if (!username || username.trim().length < 3) {
-                return { valid: false, message: '用户名至少需要3个字符' };
+            if (!username.trim()) {
+                return { valid: false, message: "用户名不能为空" };
             }
-            if (username.length > 20) {
-                return { valid: false, message: '用户名不能超过20个字符' };
+            if (username.length > 10) {
+                return { valid: false, message: "用户名不能超过10个字符" };
             }
             if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-                return { valid: false, message: '用户名只能包含字母、数字和下划线' };
+                return { valid: false, message: "用户名只能包含字母、数字和下划线" };
             }
-            return { valid: true, message: '' };
+            return { valid: true };
         }
 
+        // 验证密码
         function validatePassword(password) {
-            if (!password || password.length < 6) {
-                return { valid: false, message: '密码至少需要6个字符' };
+            if (!password) {
+                return { valid: false, message: "密码不能为空" };
             }
-            if (password.length > 30) {
-                return { valid: false, message: '密码不能超过30个字符' };
+            if (password.length > 15) {
+                return { valid: false, message: "密码不能超过15个字符" };
             }
-            return { valid: true, message: '' };
+            if (!/(?=.*[a-zA-Z])(?=.*\d)/.test(password)) {
+                return { valid: false, message: "密码必须包含英文和数字" };
+            }
+            return { valid: true };
         }
 
-        // ==================== 用户认证系统 ====================
-        async function registerUser(username, password) {
-            console.log('🔵 开始注册用户:', username);
+        // 显示错误信息
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
 
-            try {
-                // 1. 检查用户名是否已存在
-                console.log('🔍 检查用户名是否存在...');
-                const { data: existingUsers, error: checkError } = await supabase
-                    .from(TABLE_NAME)
-                    .select('username')
-                    .eq('username', username)
-                    .limit(1);
+        // 隐藏错误信息
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.style.display = 'none';
+        }
 
-                if (checkError) {
-                    console.error('❌ 检查用户名时出错:', checkError);
-                    throw new Error(`检查用户名失败: ${checkError.message}`);
-                }
+        // 切换表单
+        function switchForm(formType) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const modalTitle = document.getElementById('modalTitle');
 
-                if (existingUsers && existingUsers.length > 0) {
-                    console.log('❌ 用户名已存在:', username);
-                    return { success: false, message: '用户名已存在' };
-                }
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                modalTitle.textContent = document.querySelector('[data-i18n="auth.login"]').textContent || '登录';
 
-                // 2. 使用bcrypt加密密码
-                console.log('🔐 加密密码...');
-                const salt = bcrypt.genSaltSync(10);
-                const passwordHash = bcrypt.hashSync(password, salt);
-                console.log('✅ 密码加密完成');
+                // 清除错误信息
+                hideError('loginUsernameError');
+                hideError('loginPasswordError');
+            } else {
+                loginForm.classList.remove('active');
+                registerForm.classList.add('active');
+                loginTab.classList.remove('active');
+                registerTab.classList.add('active');
+                modalTitle.textContent = document.querySelector('[data-i18n="auth.register"]').textContent || '注册';
 
-                // 3. 插入用户到数据库
-                console.log('💾 保存用户到数据库...');
-                const { data, error } = await supabase
-                    .from(TABLE_NAME)
-                    .insert([
-                        {
-                            username: username,
-                            password_hash: passwordHash,
-                            created_at: new Date().toISOString()
-                        }
-                    ])
-                    .select();
-
-                if (error) {
-                    console.error('❌ 注册用户时出错:', error);
-                    throw new Error(`注册失败: ${error.message}`);
-                }
-
-                console.log('✅ 用户注册成功:', data);
-                return { success: true, message: '注册成功！', user: data[0] };
-
-            } catch (error) {
-                console.error('❌ 注册过程中发生错误:', error);
-                return { success: false, message: `注册失败: ${error.message}` };
+                // 清除错误信息
+                hideError('registerUsernameError');
+                hideError('registerPasswordError');
+                hideError('confirmPasswordError');
             }
         }
 
-        async function loginUser(username, password) {
-            console.log('🔵 开始登录:', username);
-
-            try {
-                // 1. 查询用户
-                console.log('🔍 查询用户信息...');
-                const { data: users, error } = await supabase
-                    .from(TABLE_NAME)
-                    .select('*')
-                    .eq('username', username)
-                    .limit(1);
-
-                if (error) {
-                    console.error('❌ 查询用户时出错:', error);
-                    throw new Error(`登录失败: ${error.message}`);
-                }
-
-                if (!users || users.length === 0) {
-                    console.log('❌ 用户不存在:', username);
-                    return { success: false, message: '用户名或密码错误' };
-                }
-
-                const user = users[0];
-                console.log('👤 找到用户:', { id: user.id, username: user.username });
-
-                // 2. 验证密码
-                console.log('🔐 验证密码...');
-                const isPasswordValid = bcrypt.compareSync(password, user.password_hash);
-
-                if (!isPasswordValid) {
-                    console.log('❌ 密码验证失败');
-                    return { success: false, message: '用户名或密码错误' };
-                }
-
-                console.log('✅ 登录成功!');
-                return {
-                    success: true,
-                    message: '登录成功！',
-                    user: {
-                        id: user.id,
-                        username: user.username,
-                        created_at: user.created_at
-                    }
-                };
-
-            } catch (error) {
-                console.error('❌ 登录过程中发生错误:', error);
-                return { success: false, message: `登录失败: ${error.message}` };
-            }
+        // 打开模态框
+        function openModal() {
+            document.getElementById('authModal').style.display = 'flex';
         }
 
-        // ==================== UI 更新函数 ====================
-        function updateUIForLoggedInUser(username) {
-            console.log('🎨 更新UI为登录状态:', username);
-
-            const authButtons = document.getElementById('authButtons');
-            authButtons.innerHTML = `
-                    <div class="user-info">
-                        <span>${translations[currentLang]['nav.welcome'] || '欢迎, '}${username}</span>
-                        <button class="btn-logout" id="logoutBtn">${translations[currentLang]['nav.logout'] || '退出'}</button>
-                    </div>
-                `;
-
-            // 添加登出事件监听
-            document.getElementById('logoutBtn').addEventListener('click', logoutUser);
-        }
-
-        function updateUIForLoggedOut() {
-            console.log('🎨 更新UI为登出状态');
-
-            const authButtons = document.getElementById('authButtons');
-            authButtons.innerHTML = `
-                    <button class="auth-btn btn-login" id="loginBtn">${translations[currentLang]['nav.login'] || '登录'}</button>
-                    <button class="auth-btn btn-register" id="registerBtn">${translations[currentLang]['nav.register'] || '注册'}</button>
-                `;
-
-            // 重新绑定登录注册按钮事件
-            document.getElementById('loginBtn').addEventListener('click', showLoginModal);
-            document.getElementById('registerBtn').addEventListener('click', showRegisterModal);
-        }
-
-        function logoutUser() {
-            console.log('🚪 用户登出');
-            sessionStorage.removeItem('currentUser');
-            showMessage('已成功退出登录');
-            updateUIForLoggedOut();
-        }
-
-        // ==================== 模态框控制 ====================
-        const authModal = document.getElementById('authModal');
-        const loginBtn = document.getElementById('loginBtn');
-        const registerBtn = document.getElementById('registerBtn');
-        const modalClose = document.getElementById('modalClose');
-        const loginTab = document.getElementById('loginTab');
-        const registerTab = document.getElementById('registerTab');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const switchToRegister = document.getElementById('switchToRegister');
-        const switchToLogin = document.getElementById('switchToLogin');
-        const modalTitle = document.getElementById('modalTitle');
-
-        // 表单元素
-        const loginUsernameInput = document.getElementById('loginUsername');
-        const loginPasswordInput = document.getElementById('loginPassword');
-        const registerUsernameInput = document.getElementById('registerUsername');
-        const registerPasswordInput = document.getElementById('registerPassword');
-        const confirmPasswordInput = document.getElementById('confirmPassword');
-
-        // 错误提示元素
-        const loginUsernameError = document.getElementById('loginUsernameError');
-        const loginPasswordError = document.getElementById('loginPasswordError');
-        const registerUsernameError = document.getElementById('registerUsernameError');
-        const registerPasswordError = document.getElementById('registerPasswordError');
-        const confirmPasswordError = document.getElementById('confirmPasswordError');
-
-        function showLoginModal() {
-            console.log('🔓 显示登录模态框');
-            authModal.style.display = 'flex';
-            loginTab.classList.add('active');
-            registerTab.classList.remove('active');
-            loginForm.classList.add('active');
-            registerForm.classList.remove('active');
-            modalTitle.textContent = translations[currentLang]['auth.login'] || '登录';
-            clearAllErrors();
-            clearAllForms();
-        }
-
-        function showRegisterModal() {
-            console.log('🔐 显示注册模态框');
-            authModal.style.display = 'flex';
-            registerTab.classList.add('active');
-            loginTab.classList.remove('active');
-            registerForm.classList.add('active');
-            loginForm.classList.remove('active');
-            modalTitle.textContent = translations[currentLang]['auth.register'] || '注册';
-            clearAllErrors();
-            clearAllForms();
-        }
-
+        // 关闭模态框
         function closeModal() {
-            authModal.style.display = 'none';
-            clearAllErrors();
-            clearAllForms();
+            document.getElementById('authModal').style.display = 'none';
+
+            // 清除表单
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('registerUsername').value = '';
+            document.getElementById('registerPassword').value = '';
+            document.getElementById('confirmPassword').value = '';
+
+            // 清除错误信息
+            hideError('loginUsernameError');
+            hideError('loginPasswordError');
+            hideError('registerUsernameError');
+            hideError('registerPasswordError');
+            hideError('confirmPasswordError');
         }
 
-        function clearAllErrors() {
-            loginUsernameError.style.display = 'none';
-            loginPasswordError.style.display = 'none';
-            registerUsernameError.style.display = 'none';
-            registerPasswordError.style.display = 'none';
-            confirmPasswordError.style.display = 'none';
-        }
+        // 登录处理
+        function handleLogin(event) {
+            event.preventDefault();
 
-        function clearAllForms() {
-            loginUsernameInput.value = '';
-            loginPasswordInput.value = '';
-            registerUsernameInput.value = '';
-            registerPasswordInput.value = '';
-            confirmPasswordInput.value = '';
-        }
-
-        // 事件监听
-        loginBtn.addEventListener('click', showLoginModal);
-        registerBtn.addEventListener('click', showRegisterModal);
-        modalClose.addEventListener('click', closeModal);
-
-        // 点击模态框外部关闭
-        authModal.addEventListener('click', (e) => {
-            if (e.target === authModal) {
-                closeModal();
-            }
-        });
-
-        // 切换登录/注册表单
-        loginTab.addEventListener('click', showLoginModal);
-        registerTab.addEventListener('click', showRegisterModal);
-        switchToRegister.addEventListener('click', showRegisterModal);
-        switchToLogin.addEventListener('click', showLoginModal);
-
-        // ==================== 表单提交处理 ====================
-        // 登录表单提交
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            console.log('🔵 登录表单提交事件触发');
-
-            // 清除之前的错误
-            clearAllErrors();
-
-            // 获取表单数据
-            const username = loginUsernameInput.value.trim();
-            const password = loginPasswordInput.value;
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
 
             // 验证用户名
             const usernameValidation = validateUsername(username);
             if (!usernameValidation.valid) {
-                loginUsernameError.textContent = usernameValidation.message;
-                loginUsernameError.style.display = 'block';
+                showError('loginUsernameError', usernameValidation.message);
+                return;
+            }
+            hideError('loginUsernameError');
+
+            // 验证密码
+            const passwordValidation = validatePassword(password);
+            if (!passwordValidation.valid) {
+                showError('loginPasswordError', passwordValidation.message);
+                return;
+            }
+            hideError('loginPasswordError');
+
+            // 检查用户是否存在
+            const users = getUsers();
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (!user) {
+                showError('loginPasswordError', "用户名或密码错误");
+                return;
+            }
+
+            // 登录成功
+            alert(`欢迎回来，${username}！`);
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            closeModal();
+
+            // 更新导航栏显示
+            updateAuthUI(user);
+        }
+
+        // 注册处理
+        function handleRegister(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // 验证用户名
+            const usernameValidation = validateUsername(username);
+            if (!usernameValidation.valid) {
+                showError('registerUsernameError', usernameValidation.message);
+                return;
+            }
+            hideError('registerUsernameError');
+
+            // 检查用户名是否已存在
+            if (usernameExists(username)) {
+                showError('registerUsernameError', "用户名已存在");
                 return;
             }
 
             // 验证密码
             const passwordValidation = validatePassword(password);
             if (!passwordValidation.valid) {
-                loginPasswordError.textContent = passwordValidation.message;
-                loginPasswordError.style.display = 'block';
+                showError('registerPasswordError', passwordValidation.message);
                 return;
             }
-
-            console.log('📋 表单数据:', { username, password: '***' + password.substring(password.length - 2) });
-
-            // 显示加载状态
-            const submitBtn = loginForm.querySelector('.form-submit');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = '登录中...';
-            submitBtn.disabled = true;
-
-            try {
-                // 调用登录函数
-                const result = await loginUser(username, password);
-
-                if (result.success) {
-                    console.log('🎉 登录成功! 用户信息:', result.user);
-                    showMessage(result.message, true);
-
-                    // 保存用户信息到sessionStorage
-                    sessionStorage.setItem('currentUser', JSON.stringify(result.user));
-                    console.log('💾 用户信息已保存到sessionStorage');
-
-                    // 更新UI
-                    updateUIForLoggedInUser(username);
-
-                    // 关闭模态框
-                    closeModal();
-                } else {
-                    console.log('❌ 登录失败:', result.message);
-                    showMessage(result.message, false);
-                    loginUsernameError.textContent = '用户名或密码错误';
-                    loginUsernameError.style.display = 'block';
-                }
-            } catch (error) {
-                console.error('❌ 登录过程中发生未捕获的错误:', error);
-                showMessage(`登录失败: ${error.message}`, false);
-            } finally {
-                // 恢复按钮状态
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                console.log('🔄 登录流程结束');
-            }
-        });
-
-        // 注册表单提交
-        registerForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            console.log('🔵 注册表单提交事件触发');
-
-            // 清除之前的错误
-            clearAllErrors();
-
-            // 获取表单数据
-            const username = registerUsernameInput.value.trim();
-            const password = registerPasswordInput.value;
-            const confirmPassword = confirmPasswordInput.value;
-
-            // 验证用户名
-            const usernameValidation = validateUsername(username);
-            if (!usernameValidation.valid) {
-                registerUsernameError.textContent = usernameValidation.message;
-                registerUsernameError.style.display = 'block';
-                return;
-            }
-
-            // 验证密码
-            const passwordValidation = validatePassword(password);
-            if (!passwordValidation.valid) {
-                registerPasswordError.textContent = passwordValidation.message;
-                registerPasswordError.style.display = 'block';
-                return;
-            }
+            hideError('registerPasswordError');
 
             // 验证确认密码
             if (password !== confirmPassword) {
-                confirmPasswordError.textContent = '两次输入的密码不一致';
-                confirmPasswordError.style.display = 'block';
+                showError('confirmPasswordError', "两次输入的密码不一致");
                 return;
             }
+            hideError('confirmPasswordError');
 
-            console.log('📋 注册表单数据:', { username, password: '***' + password.substring(password.length - 2) });
+            // 保存用户
+            const users = getUsers();
+            const newUser = {
+                username,
+                password,
+                createdAt: new Date().toISOString()
+            };
 
-            // 显示加载状态
-            const submitBtn = registerForm.querySelector('.form-submit');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = '注册中...';
-            submitBtn.disabled = true;
+            users.push(newUser);
+            saveUsers(users);
 
-            try {
-                // 调用注册函数
-                const result = await registerUser(username, password);
+            // 注册成功
+            alert(`注册成功！欢迎加入，${username}！`);
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            closeModal();
 
-                if (result.success) {
-                    console.log('🎉 注册成功! 用户信息:', result.user);
-                    showMessage(result.message, true);
+            // 更新导航栏显示
+            updateAuthUI(newUser);
+        }
 
-                    // 切换到登录表单
-                    showLoginModal();
-                    loginUsernameInput.value = username;
-                    loginPasswordInput.value = password;
+        // 更新认证UI
+        function updateAuthUI(user) {
+            const authButtons = document.querySelector('.auth-buttons');
+            if (user) {
+                authButtons.innerHTML = `
+                            <span style="color: #00ccff; margin-right: 10px;">欢迎，${user.username}</span>
+                            <button class="auth-btn btn-login" id="logoutBtn">退出</button>
+                        `;
 
-                    // 显示登录成功的提示
-                    showMessage('注册成功！请使用新账户登录。', true);
-                } else {
-                    console.log('❌ 注册失败:', result.message);
-                    showMessage(result.message, false);
-                    registerUsernameError.textContent = result.message;
-                    registerUsernameError.style.display = 'block';
-                }
-            } catch (error) {
-                console.error('❌ 注册过程中发生未捕获的错误:', error);
-                showMessage(`注册失败: ${error.message}`, false);
-            } finally {
-                // 恢复按钮状态
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                console.log('🔄 注册流程结束');
+                document.getElementById('logoutBtn').addEventListener('click', () => {
+                    localStorage.removeItem('currentUser');
+                    location.reload();
+                });
             }
-        });
+        }
 
-        // ==================== 页面初始化 ====================
-        document.addEventListener('DOMContentLoaded', async function () {
-            console.log('🚀 页面加载完成，开始初始化...');
-
-            // 初始化多语言
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function () {
+            // 初始化语言
             initLanguage();
 
-            // 测试Supabase连接
-            const isConnected = await testSupabaseConnection();
-            if (!isConnected) {
-                console.error('❌ Supabase连接失败，请检查网络和配置');
-                showMessage('数据库连接失败，请检查网络连接', false);
-            } else {
-                console.log('✅ Supabase连接成功，系统就绪');
+            // 图片加载失败处理
+            document.querySelectorAll('img').forEach(img => {
+                img.onerror = function () {
+                    console.error(`图片加载失败: ${this.src}`);
+                    if (this.classList.contains('logo-img') || this.classList.contains('hero-logo')) {
+                        this.src = 'https://i.ibb.co/qYRmkZ6R/image.png';
+                    }
+                };
+            });
+
+            // 检查当前登录状态
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                updateAuthUI(JSON.parse(currentUser));
             }
 
-            // 检查登录状态
-            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-            if (currentUser && currentUser.username) {
-                console.log('👤 检测到已登录用户:', currentUser.username);
-                updateUIForLoggedInUser(currentUser.username);
-            } else {
-                console.log('👤 没有检测到登录用户');
-                updateUIForLoggedOut();
-            }
+            // 登录/注册按钮事件
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                switchForm('login');
+                openModal();
+            });
 
-            // 语言选择器事件监听
-            document.getElementById('languageSelect').addEventListener('change', function (e) {
-                applyLanguage(e.target.value);
+            document.getElementById('registerBtn').addEventListener('click', () => {
+                switchForm('register');
+                openModal();
+            });
 
-                // 更新登录状态UI的文字
-                const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-                if (currentUser && currentUser.username) {
-                    updateUIForLoggedInUser(currentUser.username);
-                } else {
-                    updateUIForLoggedOut();
-                }
+            // 关闭模态框
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('authModal').addEventListener('click', (e) => {
+                if (e.target.id === 'authModal') closeModal();
+            });
+
+            // 切换表单
+            document.getElementById('loginTab').addEventListener('click', () => switchForm('login'));
+            document.getElementById('registerTab').addEventListener('click', () => switchForm('register'));
+            document.getElementById('switchToRegister').addEventListener('click', () => switchForm('register'));
+            document.getElementById('switchToLogin').addEventListener('click', () => switchForm('login'));
+
+            // 表单提交
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+
+            // 输入时清除错误信息
+            ['loginUsername', 'loginPassword', 'registerUsername', 'registerPassword', 'confirmPassword'].forEach(id => {
+                document.getElementById(id).addEventListener('input', function () {
+                    const errorId = id + 'Error';
+                    if (document.getElementById(errorId)) {
+                        hideError(errorId);
+                    }
+                });
             });
         });
-
-        // ==================== 调试功能 ====================
-        console.log('🔧 调试功能已启用');
-        console.log('ℹ️ 在控制台输入以下命令进行调试:');
-        console.log('  - debugSupabaseConnection() - 测试Supabase连接');
-        console.log('  - listAllUsers() - 列出所有用户');
-        console.log('  - getCurrentUser() - 获取当前登录用户');
-        console.log('  - testLogin(username, password) - 测试登录功能');
-        console.log('  - testRegister(username, password) - 测试注册功能');
-
-        // 调试函数：测试Supabase连接
-        window.debugSupabaseConnection = async function () {
-            console.log('🔍 开始测试Supabase连接...');
-            console.log('📊 配置信息:');
-            console.log('  - URL:', supabaseUrl);
-            console.log('  - Key:', supabaseKey ? '已设置' : '未设置');
-            console.log('  - 表名:', TABLE_NAME);
-
-            try {
-                console.log('1. 检查Supabase对象:', supabase ? '✓ 存在' : '✗ 不存在');
-                console.log('2. 检查bcrypt库:', typeof bcrypt !== 'undefined' ? '✓ 已加载' : '✗ 未加载');
-
-                // 测试查询
-                const { data, error, count } = await supabase
-                    .from(TABLE_NAME)
-                    .select('*', { count: 'exact', head: true });
-
-                if (error) {
-                    console.error('❌ 连接测试失败:');
-                    console.error('  - 错误代码:', error.code);
-                    console.error('  - 错误信息:', error.message);
-                    console.error('  - 错误详情:', error.details);
-                    console.error('  - 错误提示:', error.hint);
-                    return false;
-                }
-
-                console.log(`✅ 连接成功! 表 "${TABLE_NAME}" 中存在 ${count} 条记录`);
-                return true;
-            } catch (error) {
-                console.error('❌ 连接测试异常:', error);
-                return false;
-            }
-        };
-
-        // 调试函数：列出所有用户
-        window.listAllUsers = async function () {
-            console.log('👥 正在获取所有用户...');
-
-            try {
-                const { data: users, error } = await supabase
-                    .from(TABLE_NAME)
-                    .select('*')
-                    .order('id', { ascending: true });
-
-                if (error) {
-                    console.error('❌ 获取用户列表失败:', error);
-                    return;
-                }
-
-                console.log(`📊 共找到 ${users.length} 个用户:`);
-                users.forEach(user => {
-                    console.log(`  ID: ${user.id}, 用户名: ${user.username}, 创建时间: ${user.created_at}`);
-                });
-
-                return users;
-            } catch (error) {
-                console.error('❌ 获取用户列表异常:', error);
-            }
-        };
-
-        // 调试函数：获取当前登录用户
-        window.getCurrentUser = function () {
-            const userStr = sessionStorage.getItem('currentUser');
-            if (userStr) {
-                try {
-                    const user = JSON.parse(userStr);
-                    console.log('👤 当前登录用户:', user);
-                    return user;
-                } catch (error) {
-                    console.error('❌ 解析用户数据失败:', error);
-                    return null;
-                }
-            } else {
-                console.log('ℹ️ 当前没有用户登录');
-                return null;
-            }
-        };
-
-        // 调试函数：测试登录功能
-        window.testLogin = async function (username, password) {
-            console.log(`🧪 测试登录: ${username}`);
-            const result = await loginUser(username, password);
-            console.log('📊 登录结果:', result);
-            return result;
-        };
-
-        // 调试函数：测试注册功能
-        window.testRegister = async function (username, password) {
-            console.log(`🧪 测试注册: ${username}`);
-            const result = await registerUser(username, password);
-            console.log('📊 注册结果:', result);
-            return result;
-        };
-
-        // 在控制台显示使用说明
-        console.log(`
-========================================
-🚀 Supabase登录系统调试模式已启用
-========================================
-📋 可用调试命令:
-1. debugSupabaseConnection() - 测试数据库连接
-2. listAllUsers() - 查看所有用户
-3. getCurrentUser() - 查看当前登录用户
-4. testLogin('用户名', '密码') - 测试登录功能
-5. testRegister('用户名', '密码') - 测试注册功能
-
-🔍 调试步骤:
-1. 点击登录/注册按钮
-2. 在控制台查看详细日志
-3. 如果失败，检查:
-       - Supabase连接状态
-       - API密钥是否正确
-       - 表名是否正确
-       - 网络请求是否被阻止
-
-📊 预期控制台输出顺序:
-1. 🔵 登录表单提交事件触发
-2. 📋 表单数据: {username: "xxx"}
-3. 🔍 查询用户信息...
-4. 👤 找到用户: {...}
-5. 🔐 验证密码...
-6. ✅ 登录成功!
-7. 🎨 更新UI为登录状态
-8. 🎉 登录成功! 用户信息: {...}
-========================================
-`);
     </script>
 </body>
 </html>
